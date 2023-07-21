@@ -1,6 +1,6 @@
 <template>
   <div>
-
+    название поста
   </div>
 </template>
 

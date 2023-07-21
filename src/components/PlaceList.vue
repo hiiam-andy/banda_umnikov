@@ -21,6 +21,9 @@ import PlaceCard from './PlaceCard.vue';
 
 <style scoped>
 
+.section_places{
+  padding: 0 3%;
+}
 .places_header{
   align-self: center;
 }

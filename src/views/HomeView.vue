@@ -1,7 +1,6 @@
 <template>
   <hero/>
 <place-list :places="places"/>
-<button @click="fetchPlaces()">places</button>
 </template>
 
 <script>

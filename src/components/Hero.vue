@@ -1,30 +1,34 @@
 <template>
   <div class="hero">
     <h2 class="hero_header">Рестораны близко</h2>
-    <div class="">
-
+    <div class="hero_search_section">
 
       <div class="hero_search">
-        <input class="hero_input">
+        <input class="hero_input" v-model="searchQuery">
         <button class="hero_button">
           <img :src="SEARCH" alt="search" class="search">
         </button>
-        <button class="random">Выбрать случайный ресторан</button>
       </div>
+      <my-button @click="getRandomPlace()">Выбрать случайный ресторан</my-button>
     
-
     </div>
   </div>
 </template>
 
 <script>
 import SEARCH from '../store/search.svg'
+import MyButton from './UI/MyButton.vue'
   export default {
-    data: function () {
-            return {
-                SEARCH: SEARCH
-            }
-        }
+    data(){
+      return{
+        searchQuery:'',
+        SEARCH: SEARCH
+      }
+    },
+    components: { MyButton },
+    methods:{
+          
+    }
   }
 </script>
 
@@ -34,23 +38,30 @@ import SEARCH from '../store/search.svg'
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  font-size: 96px;
-  line-height: 104px;
-  color:#fff;
+  padding: 15px 30px;
   height: 500px;
   background-color: rgb(142, 66, 219);
   margin-bottom: 10px;
 }
 .hero_header{
-margin-bottom: 30px;
+  margin-bottom: 8%;
+  font-size: 96px;
+  line-height: 104px;
+  color:#fff;
+}
+.hero_search_section{
+  display: flex;
+  justify-content: space-between;
+  width:70%
 }
 .hero_search{
   display: flex;
   height: 45px;
+  width: 70%;
 }
 .hero_input{
   height: 100%;
-  min-width: 500px;
+  min-width: 50%;
   width:20%;
   flex: 1 1;
   padding: 0 15px;
@@ -78,8 +89,8 @@ width: 25px;
 height: 25px;
 fill:#fff;
 }
-.random{
-  padding: 10px 12px;
+.random_btn{
+  padding: 1% 2%;
   margin-left: 15px;
   color:#fff;
   border: none;
@@ -87,5 +98,20 @@ fill:#fff;
   background-color: #73b300;
   text-decoration: none;
   cursor: pointer;
+}
+@media(max-width:880px){
+  .hero_search_section{
+    width:100%
+  }
+
+}
+@media(max-width: 665px){
+  .hero{
+    height: 320px;
+  }
+  .hero_header{
+  font-size: 64px;
+  line-height: 68px;
+  }
 }
 </style>
