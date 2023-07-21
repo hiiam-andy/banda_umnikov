@@ -8,6 +8,7 @@ import axios from 'axios'
 import PlaceList from '@/components/PlaceList.vue'
 import Hero from '@/components/Hero.vue';
 
+
 export default {
 
   data(){
