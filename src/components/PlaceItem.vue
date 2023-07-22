@@ -10,7 +10,6 @@
       <p class="desc"><b>время пути: </b>{{ onePlace.time }} мин</p>
       <p class="desc"><b>бизнес ланч: </b>{{ onePlace.business_lunch ? 'есть': 'нет' }}</p>
       <p class="desc"><b>средний чек: </b>{{ onePlace.price }}р</p>
-      <my-button>Поделиться</my-button>
     </div>
   </div>
 </template>
