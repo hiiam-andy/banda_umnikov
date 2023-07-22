@@ -2,15 +2,23 @@
   <div class="place_dialog">
     <h5>может быть сходить в </h5>
     <h1>{{ placeDialog.name }}</h1>
-    <img class="dialog_image" :src='placeDialog.photo' alt="img" >
-    <p>средний чек: {{ placeDialog.price }}</p>
-    <my-button @click="$router.push(`/${placeDialog.id}`)">хочу сюда</my-button>
-    <my-button @click="getRandomPlace()">Выбрать другой</my-button>
+    <img 
+      class="dialog_image" 
+      :src='placeDialog.photo' 
+      alt="img"  
+      onerror="this.src='https://static.tildacdn.com/tild3938-3564-4633-b562-633139376630/_.jpg'"
+      >
+    <p><b>средний чек: </b>{{ placeDialog.price? placeDialog.price : 'нет информации' }}</p>
+    <p><b>до места: </b>{{ placeDialog.distance }}м. <b>или</b> {{ placeDialog.time }} мин.</p>
+    <div class="buttons">
+      <my-button class="btn" @click="$router.push(`/${placeDialog.id}`)">хочу сюда</my-button>
+      <my-button class="btn" @click="getRandomPlace()">Выбрать другой</my-button>
+    </div>
   </div>
 </template>
 
 <script>
-import Places from '@/api/indexApi';
+import Places from '@/utils/indexApi';
 import MyButton from './UI/MyButton.vue';
 
 export default {
@@ -45,10 +53,22 @@ mounted(){
 
 <style scoped>
 .place_dialog{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width:300px;
-  height: 300px;
+  min-height: 300px;
 }
 .dialog_image{
-  max-height: 50%;
+  max-height: 300px;
+  margin-bottom: 10px;
+}
+.buttons{
+  margin-top: 8px;
+  display: flex;
+  justify-content: space-between;
+}
+.btn{
+  margin: 0;
 }
 </style>

@@ -3,7 +3,7 @@
     <img :src="LOGO" alt="logo" class="logo">
     <nav>
       <router-link class="link" to="/">ГЛАВНЫЙ</router-link>
-      <router-link class="link" to="/about">ОБО МНЕ</router-link>
+      <router-link class="link" to="/about">ЗАДАНИЕ</router-link>
     </nav>
   </header>
 </template>
@@ -11,12 +11,12 @@
 <script>
 import LOGO from '../store/logo.svg'
 export default {
-        data: function () {
-            return {
-                LOGO: LOGO
-            }
-        }
+  data: function () {
+    return {
+      LOGO: LOGO
     }
+  }
+}
 </script>
 
 <style scoped>

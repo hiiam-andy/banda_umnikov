@@ -1,11 +1,13 @@
 <template>
-<my-header/>
+<v-header/>
   <router-view/>
+<v-footer/>
 </template>
 <script>
-import MyHeader from './components/Header.vue';
+import VHeader from '@/components/Header.vue';
+import VFooter from '@/components/Footer.vue'
   export default {
-  components: { MyHeader },
+  components: { VHeader, VFooter },
   }
 </script>
 <style>

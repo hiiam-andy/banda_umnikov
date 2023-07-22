@@ -8,21 +8,25 @@
 
 <script>
 import PlaceCard from './PlaceCard.vue';
-  export default {
+
+export default {
+
   components: { PlaceCard },
-    props:{
-      places:{
-        type: Array,
-        required: true
-      }
+
+  props:{
+    places:{
+      type: Array,
+      required: true
     }
   }
+}
 </script>
 
 <style scoped>
 
 .section_places{
   padding: 0 3%;
+  margin-bottom: 15px;
 }
 .places_header{
   align-self: center;

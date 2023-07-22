@@ -3,8 +3,8 @@
     <h2 class="hero_header">Рестораны близко</h2>
     <div class="hero_search_section">
       <div class="hero_search">
-        <input class="hero_input" v-model="searchQuery">
-        <button class="hero_button">
+        <input class="hero_input" v-model="inputValue" placeholder="Поиск...">
+        <button class="hero_button" @click="test1">
           <img :src="SEARCH" alt="search" class="search">
         </button>
       </div>
@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import Places from '@/api/indexApi';
+import Places from '@/utils/indexApi';
 import SEARCH from '../store/search.svg'
 import PlaceItem from './PlaceItem.vue';
 import PlaceItemDialog from './PlaceItemDialog.vue';
@@ -25,20 +25,27 @@ import PlaceItemDialog from './PlaceItemDialog.vue';
   export default {
     
   components: { PlaceItem, PlaceItemDialog },
+
+    emits:['searchPlace'] , 
+
     data(){
       return{
-        searchQuery:'',
+        inputValue:'',
         SEARCH: SEARCH,
         randomPlace:{},
-        dialogVisible:false
+        dialogVisible:false,
       }
     },
+
 
     methods:{
       async getRandomPlace(){
         const res = await Places.getRandom()
         this.randomPlace = res;
         this.dialogVisible = true
+      },
+      test1(){
+        this.$emit('searchPlace', this.inputValue)
       }
     },
 
@@ -125,6 +132,15 @@ fill:#fff;
   .hero_header{
   font-size: 64px;
   line-height: 68px;
+  }
+}
+@media(max-width: 456px){
+  .hero{
+    max-height: 200px;
+  }
+  .hero_header{
+    font-size: 30px;
+    line-height: 32px;
   }
 }
 </style>

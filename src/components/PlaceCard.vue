@@ -1,9 +1,10 @@
 <template>
   <div class="card" @click="$router.push(`/${place.id}`)">
-    <img class="card_image" :src='place.photo' alt="img" @error="src='altimg'" >
+    <img class="card_image" :src='place.photo' alt="img"  onerror="this.src='https://static.tildacdn.com/tild3938-3564-4633-b562-633139376630/_.jpg'" >
     <div class="card_content">
       <h1 class="card_header">{{ place.name }}</h1>
-      <p> средний чек: {{ place.price !== 0 ? place.price: "еще не посчитали"  }}</p>
+      <p>{{ place.address !== '' ? place.address : "пока еще не знаем где" }}</p>
+      <p><b>средний чек: </b> {{ place.price !== 0 ? place.price: "еще не посчитали"  }}</p>
     </div>
   </div>
 </template>
@@ -53,5 +54,10 @@
 .card_header{
   font-size: 26px;
     line-height: 28px;
+}
+@media(max-width: 456px){
+  .card{
+    max-height: 300px;
+  }
 }
 </style>
