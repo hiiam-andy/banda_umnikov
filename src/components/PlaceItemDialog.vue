@@ -70,5 +70,6 @@ mounted(){
 }
 .btn{
   margin: 0;
+  padding: 3%;
 }
 </style>

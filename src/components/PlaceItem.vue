@@ -1,23 +1,26 @@
 <template>
   <div class="place">
-    <img class="place_image" :src='onePlace.photo' alt="img" >
+    <img class="place_image" :src='onePlace.photo' alt="img" onerror="this.src='https://static.tildacdn.com/tild3938-3564-4633-b562-633139376630/_.jpg'" >
     <div class="place_description">
       <h1 class="place_header">{{ onePlace.name }}</h1>
-      <p class="desc"><b>адрес: </b>{{ onePlace.address }}</p>
-      <p class="desc"><b>ориентир: </b>{{ onePlace.landmark }}</p>
-      <p class="desc"><b>кухня: </b>{{ onePlace.cuisine }}</p>
+      <p class="desc"><b>адрес: </b>{{ onePlace.address ? onePlace.address: 'неизвестно' }}</p>
+      <p class="desc"><b>ориентир: </b>{{ onePlace.landmark ? onePlace.landmark: 'неизвестно' }}</p>
+      <p class="desc"><b>кухня: </b>{{ onePlace.cuisine ? onePlace.cuisine : 'неизвестно' }}</p>
       <p class="desc"><b>расстояние: </b>{{ onePlace.distance }} м</p>
       <p class="desc"><b>время пути: </b>{{ onePlace.time }} мин</p>
       <p class="desc"><b>бизнес ланч: </b>{{ onePlace.business_lunch ? 'есть': 'нет' }}</p>
       <p class="desc"><b>средний чек: </b>{{ onePlace.price }}р</p>
+      <my-button>Поделиться</my-button>
     </div>
   </div>
 </template>
 
 <script>
 import Places from '@/utils/indexApi';
+import MyButton from './UI/MyButton.vue';
 
   export default {
+  components: { MyButton },
     data(){
       return{
         onePlace:{}

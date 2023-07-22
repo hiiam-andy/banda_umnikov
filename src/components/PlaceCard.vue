@@ -1,6 +1,6 @@
 <template>
   <div class="card" @click="$router.push(`/${place.id}`)">
-    <img class="card_image" :src='place.photo' alt="img"  onerror="this.src='https://static.tildacdn.com/tild3938-3564-4633-b562-633139376630/_.jpg'" >
+    <img class="card_image" :src='place.photo' alt="img"  onerror="this.src='https://www.ferremas.com.py/gfx/fotosweb/wprod_0.jpg'" >
     <div class="card_content">
       <h1 class="card_header">{{ place.name }}</h1>
       <p>{{ place.address !== '' ? place.address : "пока еще не знаем где" }}</p>

@@ -39,8 +39,14 @@ export default {
   border: 2px solid #fff;
   border-radius: 4px;
   text-decoration: none;
+  transition: background-color .2s;
 }
 .link:hover{
   background-color: hsla(0,0%,100%,.2);
+}
+@media(max-width: 456px){
+.link{
+  font-size: 12px;
+}
 }
 </style>

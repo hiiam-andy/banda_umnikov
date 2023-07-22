@@ -8,7 +8,7 @@
           <img :src="SEARCH" alt="search" class="search">
         </button>
       </div>
-      <my-button @click="getRandomPlace()">Выбрать случайный ресторан</my-button>
+      <my-button @click="getRandomPlace()" class="btn">Выбрать случайный ресторан</my-button>
       <my-dialog v-model:show="dialogVisible">
         <place-item-dialog :randomPlace="randomPlace"></place-item-dialog>
       </my-dialog>
@@ -103,6 +103,10 @@ import PlaceItemDialog from './PlaceItemDialog.vue';
   border: none;
   color:#fff;
 cursor: pointer;
+transition: background-color .2s;
+}
+.hero_button:hover{
+  background-color: #74b300e1;
 }
 .search{
 width: 25px;
@@ -141,6 +145,18 @@ fill:#fff;
   .hero_header{
     font-size: 30px;
     line-height: 32px;
+  }
+  .hero_search_section{
+    flex-direction: column;
+  }
+  .hero_search{
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .btn{
+    align-self: flex-end;
+    margin: 0;
+    padding: 2%;
   }
 }
 </style>
