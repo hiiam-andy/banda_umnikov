@@ -4,10 +4,10 @@
 </template>
 
 <script>
+import Places from '@/api/indexApi';
 import axios from 'axios'
 import PlaceList from '@/components/PlaceList.vue'
 import Hero from '@/components/Hero.vue';
-
 
 export default {
 
@@ -19,15 +19,11 @@ export default {
   components: {
     Hero,
     PlaceList
-},
-methods:{
+  },
+  methods:{
     async fetchPlaces(){
-      try{
-        const response = await axios.get('https://bandaumnikov.ru/api/test/site/get-index');
-        this.places = response.data.data;
-      } catch(err){
-        console.log(err)
-      }
+      const response = await Places.getAll();
+      this.places = response;
     }
   },
   mounted(){

@@ -2,7 +2,6 @@
   <div class="hero">
     <h2 class="hero_header">Рестораны близко</h2>
     <div class="hero_search_section">
-
       <div class="hero_search">
         <input class="hero_input" v-model="searchQuery">
         <button class="hero_button">
@@ -10,25 +9,39 @@
         </button>
       </div>
       <my-button @click="getRandomPlace()">Выбрать случайный ресторан</my-button>
-    
+      <my-dialog v-model:show="dialogVisible">
+        <place-item-dialog :randomPlace="randomPlace"></place-item-dialog>
+      </my-dialog>
     </div>
   </div>
 </template>
 
 <script>
+import Places from '@/api/indexApi';
 import SEARCH from '../store/search.svg'
-import MyButton from './UI/MyButton.vue'
+import PlaceItem from './PlaceItem.vue';
+import PlaceItemDialog from './PlaceItemDialog.vue';
+
   export default {
+    
+  components: { PlaceItem, PlaceItemDialog },
     data(){
       return{
         searchQuery:'',
-        SEARCH: SEARCH
+        SEARCH: SEARCH,
+        randomPlace:{},
+        dialogVisible:false
       }
     },
-    components: { MyButton },
+
     methods:{
-          
-    }
+      async getRandomPlace(){
+        const res = await Places.getRandom()
+        this.randomPlace = res;
+        this.dialogVisible = true
+      }
+    },
+
   }
 </script>
 

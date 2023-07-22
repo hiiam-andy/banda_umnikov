@@ -1,28 +1,22 @@
 <template>
-  <div class="card" >
+  <div class="card" @click="$router.push(`/${place.id}`)">
     <img class="card_image" :src='place.photo' alt="img" @error="src='altimg'" >
     <div class="card_content">
       <h1 class="card_header">{{ place.name }}</h1>
-      <h3>{{ place.landmark }}</h3>
-      <p> средний чек: {{ place.price }}</p>
-      <my-button class="card_btn"
-        @click="$router.push(`/${place.id}`)"
-      >подробнее</my-button>
-      
+      <p> средний чек: {{ place.price !== 0 ? place.price: "еще не посчитали"  }}</p>
     </div>
   </div>
 </template>
 
 <script>
-import MyButton from './UI/MyButton.vue'
+
 
   export default {
     data(){
       return{
-        altimg: '~/store/undefinedImage.jpg'
+        altimg: '@/store/undefinedImage.jpg'
       }
     },
-    components: { MyButton, },
     props: {
       place:{
         type: Object,
@@ -39,7 +33,9 @@ import MyButton from './UI/MyButton.vue'
   overflow: hidden;
   min-width:200px;
   max-width: 600px;
+  min-height: 316px;
   max-height: 380px;
+  cursor: pointer;
 }
 .card_image{
   width: 100%;
@@ -49,7 +45,7 @@ import MyButton from './UI/MyButton.vue'
 .card_content{
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 1% 6% 8%;
   height: 50%;
   min-height: 50%;
@@ -57,8 +53,5 @@ import MyButton from './UI/MyButton.vue'
 .card_header{
   font-size: 26px;
     line-height: 28px;
-}
-.card_btn{
-  align-self: flex-end;
 }
 </style>

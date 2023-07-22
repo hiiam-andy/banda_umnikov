@@ -18,6 +18,7 @@ import MyHeader from './components/Header.vue';
 img {
   max-width: 100%;
   height: auto;
+  object-fit: cover;
 }
 li {
   list-style: none;
