@@ -104,7 +104,7 @@ export default {
 }
 .hero_button{
   height: 100%;
-  width:50px;
+  width:60px;
   background-color: #73b300;
   border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;

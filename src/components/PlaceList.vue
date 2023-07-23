@@ -73,7 +73,7 @@ export default {
   max-width: 1050px;
 }
 .places_notfound{
-  margin: 2% 2%;
+  margin: 5% 2%;
   display: flex;
   justify-content: center;
   align-items: center;
