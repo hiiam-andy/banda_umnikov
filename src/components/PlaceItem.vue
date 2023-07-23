@@ -20,6 +20,7 @@
       <p class="place_description__item"><b>время пути: </b>{{ onePlace.time }} мин</p>
       <p class="place_description__item"><b>бизнес ланч: </b>{{ onePlace.business_lunch ? 'есть': 'нет' }}</p>
       <p class="place_description__item"><b>средний чек: </b>{{ onePlace.price }}р</p>
+      <my-vk/>
     </div>
   </div>
 </template>
@@ -27,9 +28,10 @@
 <script>
 import Places from '@/utils/indexApi';
 import MyButton from './UI/MyButton.vue';
+import MyVk from './UI/MyVk.vue';
 
   export default {
-  components: { MyButton },
+  components: { MyButton, MyVk },
     data(){
       return{
         onePlace:{},
