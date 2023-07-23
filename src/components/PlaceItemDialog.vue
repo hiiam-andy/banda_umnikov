@@ -8,11 +8,9 @@
       alt="img"  
       onerror="this.src='https://static.tildacdn.com/tild3938-3564-4633-b562-633139376630/_.jpg'"
       >
-    <img 
-      v-else 
-      src='@/store/loading.png' 
-      class="dialog_image" 
-    >
+    <h3 v-else class="dialog_image">
+      Загрузка...
+    </h3> 
     <p>{{ placeDialog.cuisine ? placeDialog.cuisine : 'Неисследованная' }} кухня</p>
     <p>
       <b>средний чек: </b>

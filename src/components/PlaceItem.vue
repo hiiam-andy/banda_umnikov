@@ -6,11 +6,10 @@
       :src='onePlace.photo' alt="img" 
       onerror="this.src='https://static.tildacdn.com/tild3938-3564-4633-b562-633139376630/_.jpg'" 
     >
-    <img 
-      v-else
-      class="place_image" 
-      src='@/store/loading.png'
-    >
+    <h3 v-else class="place_image">
+      Загрузка...
+    </h3> 
+
     <div class="place_description">
       <h1 class="place_header">{{ onePlace.name }}</h1>
       <p class="place_description__item"><b>адрес: </b>{{ onePlace.address ? onePlace.address: 'неизвестно' }}</p>
@@ -70,6 +69,7 @@ import MyOk from './UI/MyOk.vue';
 }
   .place_image{
     max-height: 400px;
+    min-height: 300px;
     max-width: 40%;
   }
   .place_description{
