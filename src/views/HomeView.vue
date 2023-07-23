@@ -1,7 +1,9 @@
 <template>
   <hero @searchPlace="searchPlace"/>
-  <place-list v-if="sortedAndSearch.length > 0" :places="sortedAndSearch" />
-  <h2 v-else>Не найдено</h2>
+  <place-list v-if="!isLoading" :places="sortedAndSearch" />
+  <div v-else class="home_loading">
+    <h2 >Поиск мест...</h2>
+  </div>
 </template>
 
 <script>
@@ -18,6 +20,7 @@ export default {
       page: 1,
       limit: 8,
       totalPages: '',
+      isLoading: false
     }
   },
 
@@ -28,9 +31,11 @@ export default {
 
   methods:{
     async fetchPlaces(){
+      this.isLoading = true
       const response = await Places.getAll();
       this.places = response;
       this.totalPages = response.length
+      this.isLoading = false;
     },
     searchPlace(value){
       this.inputValue = value
@@ -50,5 +55,11 @@ export default {
 }
 </script>
 <style scoped>
-
+.home_loading{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px auto;
+  
+}
 </style>

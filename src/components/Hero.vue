@@ -3,12 +3,20 @@
     <h2 class="hero_header">Рестораны близко</h2>
     <div class="hero_search_section">
       <div class="hero_search">
-        <input class="hero_input" v-model="inputValue" placeholder="Поиск...">
-        <button class="hero_button" @click="test1">
+        <input 
+          class="hero_input" 
+          v-model="inputValue" 
+          placeholder="Поиск..."
+        >
+        <button class="hero_button" @click="search">
           <img :src="SEARCH" alt="search" class="search">
         </button>
       </div>
-      <my-button @click="getRandomPlace()" class="btn">Выбрать случайный ресторан</my-button>
+      <my-button 
+        @click="getRandomPlace()" 
+        class="btn">
+          Выбрать случайный ресторан
+      </my-button>
       <my-dialog v-model:show="dialogVisible">
         <place-item-dialog :randomPlace="randomPlace"></place-item-dialog>
       </my-dialog>
@@ -22,34 +30,32 @@ import SEARCH from '../store/search.svg'
 import PlaceItem from './PlaceItem.vue';
 import PlaceItemDialog from './PlaceItemDialog.vue';
 
-  export default {
+export default {
     
   components: { PlaceItem, PlaceItemDialog },
 
-    emits:['searchPlace'] , 
+  emits:['searchPlace'] , 
 
-    data(){
-      return{
-        inputValue:'',
-        SEARCH: SEARCH,
-        randomPlace:{},
-        dialogVisible:false,
-      }
+  data(){
+    return{
+      inputValue:'',
+      SEARCH: SEARCH,
+      randomPlace:{},
+      dialogVisible:false,
+    }
+  },
+
+  methods:{
+    async getRandomPlace(){
+      const res = await Places.getRandom()
+      this.randomPlace = res;
+      this.dialogVisible = true
     },
-
-
-    methods:{
-      async getRandomPlace(){
-        const res = await Places.getRandom()
-        this.randomPlace = res;
-        this.dialogVisible = true
-      },
-      test1(){
+    search(){
         this.$emit('searchPlace', this.inputValue)
       }
-    },
-
-  }
+  },
+}
 </script>
 
 <style scoped>
@@ -151,7 +157,7 @@ fill:#fff;
   }
   .hero_search{
     width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
   .btn{
     align-self: flex-end;

@@ -1,15 +1,25 @@
 <template>
   <div class="place">
-    <img class="place_image" :src='onePlace.photo' alt="img" onerror="this.src='https://static.tildacdn.com/tild3938-3564-4633-b562-633139376630/_.jpg'" >
+    <img
+      v-if="!isLoading" 
+      class="place_image" 
+      :src='onePlace.photo' alt="img" 
+      onerror="this.src='https://static.tildacdn.com/tild3938-3564-4633-b562-633139376630/_.jpg'" 
+    >
+    <img 
+      v-else
+      class="place_image" 
+      src='@/store/loading.png'
+    >
     <div class="place_description">
       <h1 class="place_header">{{ onePlace.name }}</h1>
-      <p class="desc"><b>адрес: </b>{{ onePlace.address ? onePlace.address: 'неизвестно' }}</p>
-      <p class="desc"><b>ориентир: </b>{{ onePlace.landmark ? onePlace.landmark: 'неизвестно' }}</p>
-      <p class="desc"><b>кухня: </b>{{ onePlace.cuisine ? onePlace.cuisine : 'неизвестно' }}</p>
-      <p class="desc"><b>расстояние: </b>{{ onePlace.distance }} м</p>
-      <p class="desc"><b>время пути: </b>{{ onePlace.time }} мин</p>
-      <p class="desc"><b>бизнес ланч: </b>{{ onePlace.business_lunch ? 'есть': 'нет' }}</p>
-      <p class="desc"><b>средний чек: </b>{{ onePlace.price }}р</p>
+      <p class="place_description__item"><b>адрес: </b>{{ onePlace.address ? onePlace.address: 'неизвестно' }}</p>
+      <p class="place_description__item"><b>ориентир: </b>{{ onePlace.landmark ? onePlace.landmark: 'неизвестно' }}</p>
+      <p class="place_description__item"><b>кухня: </b>{{ onePlace.cuisine ? onePlace.cuisine : 'неизвестно' }}</p>
+      <p class="place_description__item"><b>расстояние: </b>{{ onePlace.distance }} м</p>
+      <p class="place_description__item"><b>время пути: </b>{{ onePlace.time }} мин</p>
+      <p class="place_description__item"><b>бизнес ланч: </b>{{ onePlace.business_lunch ? 'есть': 'нет' }}</p>
+      <p class="place_description__item"><b>средний чек: </b>{{ onePlace.price }}р</p>
     </div>
   </div>
 </template>
@@ -22,14 +32,17 @@ import MyButton from './UI/MyButton.vue';
   components: { MyButton },
     data(){
       return{
-        onePlace:{}
+        onePlace:{},
+        isLoading: false
       }
     },
   methods:{
     async fetchPlace(){
+      this.isLoading = true
       const placeID = this.$route.params.id
       const response = await Places.getOne(placeID);
       this.onePlace = response
+      this.isLoading = false
     }
   },
   mounted(){
@@ -47,6 +60,7 @@ import MyButton from './UI/MyButton.vue';
   margin-left: auto;
 }
   .place_image{
+    max-height: 400px;
     max-width: 40%;
   }
   .place_description{
@@ -55,7 +69,7 @@ import MyButton from './UI/MyButton.vue';
   .place_header{
     margin-bottom: 15px;
   }
-  .desc{
+  .place_description__item{
     margin-bottom: 5px;
   }
   @media(max-width: 665px){
@@ -66,8 +80,7 @@ import MyButton from './UI/MyButton.vue';
       width:100%
     }
     .place_image{
-    width: 100%;
-    max-width: 500px;
+      max-width: 100%;
   }
   }
 </style>

@@ -1,11 +1,10 @@
 <template>
-  <div class="dialog" 
+  <div 
     v-if="show"
+    class="dialog" 
     @click.stop="hideDialog"
   >
-    <div 
-    @click.stop 
-    class="dialog__content">
+    <div @click.stop class="dialog_content">
       <slot></slot>
     </div>
   </div>
@@ -38,7 +37,7 @@
   position: fixed;
   display: flex;
 }
-.dialog__content{
+.dialog_content{
   padding: 20px;
 margin: auto;
 background: white;

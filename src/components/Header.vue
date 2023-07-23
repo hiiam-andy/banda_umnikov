@@ -1,10 +1,9 @@
 <template>
   <header class="header">
-    <img :src="LOGO" alt="logo" class="logo">
-    <nav>
-      <router-link class="link" to="/">ГЛАВНЫЙ</router-link>
-      <router-link class="link" to="/about">ЗАДАНИЕ</router-link>
-    </nav>
+      <router-link to="/">
+        <img :src="LOGO" alt="logo" class="header_logo">
+      </router-link>
+      <router-link class="header_link" to="/about">ЗАДАНИЕ</router-link>
   </header>
 </template>
 
@@ -28,11 +27,11 @@ export default {
   height: 70px;
   background-color: rgb(142, 66, 219);
 }
-.logo{
+.header_logo{
   color: black;
   cursor: pointer;
 }
-.link{
+.header_link{
   padding: 10px 12px;
   margin-left: 15px;
   color:#fff;
@@ -41,11 +40,11 @@ export default {
   text-decoration: none;
   transition: background-color .2s;
 }
-.link:hover{
+.header_link:hover{
   background-color: hsla(0,0%,100%,.2);
 }
 @media(max-width: 456px){
-.link{
+.header_link{
   font-size: 12px;
 }
 }

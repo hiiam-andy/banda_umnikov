@@ -1,15 +1,17 @@
 <template>
-<v-header/>
+  <v-header/>
   <router-view/>
-<v-footer/>
+  <v-footer/>
 </template>
 <script>
 import VHeader from '@/components/Header.vue';
-import VFooter from '@/components/Footer.vue'
-  export default {
+import VFooter from '@/components/Footer.vue';
+
+export default {
   components: { VHeader, VFooter },
   }
 </script>
+
 <style>
 * {
   margin: 0;
