@@ -20,7 +20,12 @@
       <p class="place_description__item"><b>время пути: </b>{{ onePlace.time }} мин</p>
       <p class="place_description__item"><b>бизнес ланч: </b>{{ onePlace.business_lunch ? 'есть': 'нет' }}</p>
       <p class="place_description__item"><b>средний чек: </b>{{ onePlace.price }}р</p>
-      <my-vk/>
+      <div class="place_links">
+        Можете поделиться с друзьями
+        <my-vk/>
+        <my-telegram/>
+        <my-ok/>
+      </div>
     </div>
   </div>
 </template>
@@ -29,9 +34,11 @@
 import Places from '@/utils/indexApi';
 import MyButton from './UI/MyButton.vue';
 import MyVk from './UI/MyVk.vue';
+import MyTelegram from './UI/MyTelegram.vue';
+import MyOk from './UI/MyOk.vue';
 
   export default {
-  components: { MyButton, MyVk },
+  components: { MyButton, MyVk, MyTelegram, MyOk },
     data(){
       return{
         onePlace:{},
@@ -73,6 +80,14 @@ import MyVk from './UI/MyVk.vue';
   }
   .place_description__item{
     margin-bottom: 5px;
+  }
+  .place_links{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+    width: 100%;
+    max-width: 370px;
   }
   @media(max-width: 665px){
     .place{
