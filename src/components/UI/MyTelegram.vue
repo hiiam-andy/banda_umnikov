@@ -22,4 +22,5 @@ import { STelegram } from 'vue-socials'
 </script>
 
 <style  scoped>
+
 </style>

@@ -23,6 +23,9 @@
   transition: background-color .2s;
 }
 .btn:hover{
-  background-color: #74b300e1;
+  background-color: #46bed7;
+}
+.btn:active{
+  background-color: #f0e524;
 }
 </style>

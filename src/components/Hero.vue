@@ -114,7 +114,10 @@ cursor: pointer;
 transition: background-color .2s;
 }
 .hero_button:hover{
-  background-color: #74b300e1;
+  background-color: #46bed7;
+}
+.hero_button:active{
+  background-color: #f0e524;
 }
 .search{
 width: 25px;

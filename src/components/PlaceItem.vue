@@ -21,9 +21,9 @@
       <p class="place_description__item"><b>средний чек: </b>{{ onePlace.price }}р</p>
       <div class="place_links">
         Можете поделиться с друзьями
-        <my-vk/>
-        <my-telegram/>
-        <my-ok/>
+        <my-vk class="place_link"/>
+        <my-telegram class="place_link"/>
+        <my-ok class="place_link"/>
       </div>
     </div>
   </div>
@@ -88,6 +88,9 @@ import MyOk from './UI/MyOk.vue';
     margin-top: 15px;
     width: 100%;
     max-width: 370px;
+  }
+  .place_link path{
+    fill: #73b300;
   }
   @media(max-width: 665px){
     .place{

@@ -38,7 +38,13 @@ export default {
 }
 .footer_myLink{
   text-decoration: none;
-  color:#BF92ED
-
+  color:#BF92ED;
+  transition: color .2s;
+}
+.footer_myLink:hover{
+  color:#fff
+}
+.footer_myLink:active{
+  color:#2f3841;
 }
 </style>
