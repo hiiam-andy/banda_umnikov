@@ -5,7 +5,7 @@
       dev by 
       <a href="https://github.com/hiiam-andy" class="footer_myLink">hiiam-andy</a>
     </p>
-    <div>links</div>
+    <a href="https://bandaumnikov.ru/" class="footer_myLink">Банда умников</a>
   </footer>
 </template>
 
