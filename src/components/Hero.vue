@@ -94,6 +94,8 @@ export default {
   border: none;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
   font-size: 16px;
   color: #353b43;
 }
