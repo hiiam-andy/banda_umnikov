@@ -3,7 +3,11 @@
       <router-link to="/">
         <img :src="LOGO" alt="logo" class="header_logo">
       </router-link>
-      <router-link class="header_link" to="/about">ЗАДАНИЕ</router-link>
+      <div>
+        <router-link class="header_link" to="/">ГЛАВНАЯ</router-link>
+        <router-link class="header_link" to="/about">ЗАДАНИЕ</router-link>
+
+      </div>
   </header>
 </template>
 
