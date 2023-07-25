@@ -17,9 +17,6 @@ export default {
     return{
       places:[],
       inputValue:'',
-      page: 1,
-      limit: 8,
-      totalPages: '',
       isLoading: false
     }
   },
@@ -34,7 +31,6 @@ export default {
       this.isLoading = true
       const response = await Places.getAll();
       this.places = response;
-      this.totalPages = response.length
       this.isLoading = false;
     },
     searchPlace(value){
