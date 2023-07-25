@@ -12,15 +12,18 @@
 
     <div class="place_description">
       <h1 class="place_header">{{ onePlace.name }}</h1>
-      <p class="place_description__item"><b>адрес: </b>{{ onePlace.address ? onePlace.address: 'неизвестно' }}</p>
-      <p class="place_description__item"><b>ориентир: </b>{{ onePlace.landmark ? onePlace.landmark: 'неизвестно' }}</p>
-      <p class="place_description__item"><b>кухня: </b>{{ onePlace.cuisine ? onePlace.cuisine : 'неизвестно' }}</p>
-      <p class="place_description__item"><b>расстояние: </b>{{ onePlace.distance }} м</p>
-      <p class="place_description__item"><b>время пути: </b>{{ onePlace.time }} мин</p>
+      <p class="place_description__item"><b>адрес: </b>{{ onePlace.address ? onePlace.address: 'Неизвестно' }}</p>
+      <p class="place_description__item"><b>ориентир: </b>{{ onePlace.landmark ? onePlace.landmark: 'Неизвестно' }}</p>
+      <p class="place_description__item"><b>кухня: </b>{{ onePlace.cuisine ? onePlace.cuisine : 'Интересно узнать' }}</p>
+      <p class="place_description__item"><b>расстояние: </b>{{ onePlace.distance ? onePlace.distance + ' м.' : 'Надо прогуляться' }}</p>
+      <p class="place_description__item"><b>время пути: </b>{{ onePlace.time ? onePlace.time + 'мин.' : 'Надо засечь' }}</p>
       <p class="place_description__item"><b>бизнес ланч: </b>{{ onePlace.business_lunch ? 'есть': 'нет' }}</p>
-      <p class="place_description__item"><b>средний чек: </b>{{ onePlace.price }}р</p>
+      <p class="place_description__item"><b>средний чек: </b>{{ onePlace.price ? onePlace.price +' p.': 'Надо проверить' }}</p>
       <div class="place_links">
-        Можете поделиться с друзьями
+        <h5>
+          {{ !onePlace.time && !onePlace.distance ? "Можете узнать у друзей: " : 'Можете поделиться с друзьями: ' }}
+          
+        </h5>
         <my-vk class="place_link"/>
         <my-telegram class="place_link"/>
         <my-ok class="place_link"/>
@@ -73,7 +76,8 @@ import MyOk from './UI/MyOk.vue';
     max-width: 40%;
   }
   .place_description{
-    width: 58%
+    width: 58%;
+    cursor: default;
   }
   .place_header{
     margin-bottom: 15px;

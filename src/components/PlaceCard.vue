@@ -8,7 +8,7 @@
     >
     <div class="card_content">
       <h1 class="card_header">{{ place.name }}</h1>
-      <p>{{ place.address !== '' ? place.address : "пока еще не знаем где" }}</p>
+      <p>{{ place.address ? place.address : "Пока еще не знаем где"}}</p>
       <p><b>средний чек: </b> {{ place.price !== 0 ? place.price: "еще не посчитали"  }}</p>
     </div>
   </div>
@@ -40,6 +40,10 @@
   min-height: 316px;
   max-height: 380px;
   cursor: pointer;
+  transition: box-shadow .2s;
+}
+.card:hover{
+  box-shadow: 0 15px 48px rgba(49,49,49,.16);
 }
 .card_image{
   width: 100%;

@@ -73,6 +73,7 @@ export default {
   font-size: 96px;
   line-height: 104px;
   color:#fff;
+  cursor: default;
 }
 .hero_search_section{
   display: flex;

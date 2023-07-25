@@ -11,17 +11,22 @@
     <h3 v-else class="dialog_image">
       Загрузка...
     </h3> 
-    <p>{{ placeDialog.cuisine ? placeDialog.cuisine : 'Неисследованная' }} кухня</p>
-    <p>
+    <h5 class="dialog_unknown">
+      {{ !placeDialog.time && !placeDialog.distance ? "МОЖЕТ БЫТЬ ИНТЕРЕСНО!" : '' }}
+    </h5>
+    <p class="dialog_description">{{ placeDialog.cuisine ? placeDialog.cuisine : 'Неисследованная' }} кухня</p>
+    <p class="dialog_description">
       <b>средний чек: </b>
       {{ placeDialog.price? placeDialog.price : 'нет информации' }}
     </p>
-    <p>
+    <p class="dialog_description">
       <b>до места: </b>
-      {{ placeDialog.distance }}м. 
-      <b>или</b>
-       {{ placeDialog.time }} мин.
-    </p>
+      {{ placeDialog.distance ? placeDialog.distance + " м." : 'так далеко не ходили' }} 
+      </p>
+      <p class="dialog_description">
+        <b>пешком: </b>{{ placeDialog.time ? placeDialog.time : 'еще не засекали' }} мин.
+      </p>
+    
     <div class="dialog_buttons">
       <my-button 
         class="btn"
@@ -91,6 +96,9 @@ mounted(){
   max-height: 300px;
   margin-bottom: 10px;
 }
+.dialog_description{
+  margin-bottom: 10px;
+}
 .dialog_buttons{
   margin-top: 8px;
   display: flex;
@@ -99,5 +107,11 @@ mounted(){
 .btn{
   margin: 0;
   padding: 3%;
+}
+.dialog_unknown{
+  color:crimson;
+  position: relative;
+  top: -57px;
+  align-self: flex-end;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <footer class="footer">
-    <img :src="LOGO" alt="logo" class="footer_logo">
+    <img :src="LOGO" alt="logo" class="footer_logo" @click="scrollToTop()">
     <p class="footer_dev"> 
       dev by 
       <a href="https://github.com/hiiam-andy" class="footer_myLink">hiiam-andy</a>
@@ -15,6 +15,11 @@ export default {
   data: function () {
     return {
       LOGO: LOGO
+    }
+  },
+  methods:{
+    scrollToTop(){
+      window.scrollTo({top:0, left:0, behavior: 'smooth'})
     }
   }
 }
@@ -34,7 +39,8 @@ export default {
   cursor: pointer;
 }
 .footer_dev{
-  color:#51158E
+  color:#51158E;
+  cursor: default;
 }
 .footer_myLink{
   text-decoration: none;
@@ -46,5 +52,11 @@ export default {
 }
 .footer_myLink:active{
   color:#2f3841;
+}
+@media(max-width: 377px){
+.footer{
+  flex-direction: column;
+  height: 120px;
+}
 }
 </style>
