@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import LOGO from '../store/logo.svg'
+import LOGO from '@/assets/logo.svg'
 export default {
   data: function () {
     return {

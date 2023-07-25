@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import SEARCH from '../store/search.svg'
+import SEARCH from '@/assets/search.svg'
 import PlaceItem from './PlaceItem.vue';
 
 
