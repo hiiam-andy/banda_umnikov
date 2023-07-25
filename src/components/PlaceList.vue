@@ -17,40 +17,32 @@
     </a>
     </p>
   </div>
-  <my-dialog v-model:show="dialogVisible">
-    <place-item-dialog :randomPlace="randomPlace"/>
-  </my-dialog>
 </template>
 
 <script>
-import Places from '@/utils/indexApi';
 import PlaceCard from './PlaceCard.vue';
-import PlaceItemDialog from './PlaceItemDialog.vue';
 
 export default {
 
-  components: { PlaceCard,PlaceItemDialog },
+  components: { PlaceCard,},
 
   props:{
     places:{
       type: Array,
       required: true
-    }
+    },
+    randomPlace:{
+      type: Object,
+      required:true
+    } 
   },
 
-  data(){
-    return{
-      randomPlace:{},
-      dialogVisible:false,
-    }
-  },
+  emits:['getRandomPlace'] ,
 
   methods:{
-    async getRandomPlace(){
-      const res = await Places.getRandom()
-      this.randomPlace = res;
-      this.dialogVisible = true
-    },
+    getRandomPlace(){
+        this.$emit('getRandomPlace')
+      }
 }
 }
 </script>

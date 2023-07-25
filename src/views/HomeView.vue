@@ -1,15 +1,19 @@
 <template>
-  <hero @searchPlace="searchPlace"/>
-  <place-list v-if="!isLoading" :places="sortedAndSearch" />
+  <hero @searchPlace="searchPlace" @getRandomPlace="getRandomPlace" :randomPlace="randomPlace" />
+  <place-list v-if="!isLoading" :places="searchedPlaces"  @getRandomPlace="getRandomPlace" :randomPlace="randomPlace" />
   <div v-else class="home_loading">
     <h2 >Поиск мест...</h2>
   </div>
+  <my-dialog v-model:show="dialogVisible">
+        <place-item-dialog :randomPlace="randomPlace"></place-item-dialog>
+      </my-dialog>
 </template>
 
 <script>
 import Places from '@/utils/indexApi';
 import PlaceList from '@/components/PlaceList.vue'
 import Hero from '@/components/Hero.vue';
+import PlaceItemDialog from '@/components/PlaceItemDialog.vue';
 
 export default {
 
@@ -17,13 +21,16 @@ export default {
     return{
       places:[],
       inputValue:'',
-      isLoading: false
+      isLoading: false,
+      randomPlace:{},
+      dialogVisible:false,
     }
   },
 
   components: {
     Hero,
-    PlaceList
+    PlaceList,
+    PlaceItemDialog,
   },
 
   methods:{
@@ -33,6 +40,13 @@ export default {
       this.places = response;
       this.isLoading = false;
     },
+
+    async getRandomPlace(){
+      const res = await Places.getRandom()
+      this.randomPlace = res;
+      this.dialogVisible = true
+    },
+    
     searchPlace(value){
       this.inputValue = value
       this.value =''
@@ -44,7 +58,7 @@ export default {
   },
 
   computed:{
-    sortedAndSearch(){
+    searchedPlaces(){
       return this.places.filter(place=>place.name.toLowerCase().includes(this.inputValue.toLowerCase()))
     },
   },

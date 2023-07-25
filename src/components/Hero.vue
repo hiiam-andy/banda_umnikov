@@ -8,51 +8,50 @@
           v-model="inputValue" 
           placeholder="Поиск..."
         >
-        <button class="hero_button" @click="search">
+        <button class="hero_button" @click="searchPlace">
           <img :src="SEARCH" alt="search" class="search">
         </button>
       </div>
       <my-button 
-        @click="getRandomPlace()" 
+        @click="getRandomPlace" 
         class="btn">
           Выбрать случайный ресторан
       </my-button>
-      <my-dialog v-model:show="dialogVisible">
-        <place-item-dialog :randomPlace="randomPlace"></place-item-dialog>
-      </my-dialog>
     </div>
   </div>
 </template>
 
 <script>
-import Places from '@/utils/indexApi';
 import SEARCH from '../store/search.svg'
 import PlaceItem from './PlaceItem.vue';
-import PlaceItemDialog from './PlaceItemDialog.vue';
+
 
 export default {
     
-  components: { PlaceItem, PlaceItemDialog },
+  components: { PlaceItem,
 
-  emits:['searchPlace'] , 
+     },
+  props:{
+    randomPlace:{
+      type: Object,
+      required:true
+    } 
+  },
+  emits:['searchPlace', 'getRandomPlace'] , 
 
   data(){
     return{
       inputValue:'',
       SEARCH: SEARCH,
-      randomPlace:{},
-      dialogVisible:false,
     }
   },
 
   methods:{
-    async getRandomPlace(){
-      const res = await Places.getRandom()
-      this.randomPlace = res;
-      this.dialogVisible = true
-    },
-    search(){
+    searchPlace(){
         this.$emit('searchPlace', this.inputValue)
+      },
+      getRandomPlace(){
+        this.$emit('getRandomPlace')
       }
   },
 }
