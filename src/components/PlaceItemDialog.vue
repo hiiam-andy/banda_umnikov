@@ -1,7 +1,8 @@
 <template>
   <div class="place_dialog">
-    <h4>Может быть сходить в</h4>
-    <h1>{{ placeDialog.name }}</h1>
+  <div class="place_dialog_image">
+    <p>Может быть сходить в</p>
+    <h2>{{ placeDialog.name }}</h2>
     <img v-if="!isLoading"
       class="dialog_image" 
       :src='placeDialog.photo' 
@@ -14,6 +15,9 @@
     <h5 class="dialog_unknown">
       {{ !placeDialog.time && !placeDialog.distance ? "МОЖЕТ БЫТЬ ИНТЕРЕСНО!" : '' }}
     </h5>
+  </div>
+
+  <div class="dialog_info">
     <p class="dialog_description">{{ placeDialog.cuisine ? placeDialog.cuisine : 'Неисследованная' }} кухня</p>
     <p class="dialog_description">
       <b>средний чек: </b>
@@ -38,6 +42,7 @@
         @click="getRandomPlace()">
         Выбрать другой
       </my-button>
+    </div>
     </div>
   </div>
 </template>
@@ -89,11 +94,17 @@ mounted(){
   flex-direction: column;
   justify-content: space-between;
   width:300px;
-  min-height: 300px;
+}
+.place_dialog_image{
+  display: flex;
+  flex-direction: column;
+  width:100%;
+}
+.dialog_info{
+  width: 100%;
 }
 .dialog_image{
-  min-height: 250px;
-  max-height: 300px;
+  height: 250px;
   margin-bottom: 10px;
 }
 .dialog_description{
@@ -110,8 +121,32 @@ mounted(){
 }
 .dialog_unknown{
   color:crimson;
+  background-color: #fff;
   position: relative;
-  top: -57px;
+  top: -35px;
   align-self: flex-end;
+}
+@media(max-height:600px){
+  .place_dialog{
+    flex-direction: row;
+    width: 525px;
+    font-size:small;
+  }
+  .place_dialog_image{
+    width: 50%;
+  }
+  .dialog_image{
+    height: 205px;
+    margin: 0;
+  }
+  .dialog_info{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 46%;
+  }
+  .dialog_buttons{
+    margin-top: 27%;
+  }
 }
 </style>

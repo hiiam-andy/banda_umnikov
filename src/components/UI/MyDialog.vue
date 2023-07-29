@@ -1,8 +1,11 @@
-<template>
+<template  >
   <div 
     v-if="show"
     class="dialog" 
     @click.stop="hideDialog"
+    @wheel.prevent
+    @touchmove.prevent
+    @scroll.prevent
   >
     <div @click.stop class="dialog_content">
       <slot></slot>
@@ -44,5 +47,11 @@ background: white;
 border-radius: 12px;
 min-height: 50px;
 min-width: 300px;
+}
+@media(max-height:600px){
+  .dialog_content{
+    min-width: 530px;
+    max-height: 320px;
+  }
 }
 </style>

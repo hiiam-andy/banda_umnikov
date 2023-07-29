@@ -63,13 +63,12 @@ export default {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 15px 30px;
-  height: 500px;
+  padding: 30px 30px;
   background-color: rgb(142, 66, 219);
   margin-bottom: 10px;
 }
 .hero_header{
-  margin-bottom: 8%;
+  margin-bottom: 30px;
   font-size: 96px;
   line-height: 104px;
   color:#fff;
@@ -170,4 +169,14 @@ fill:#fff;
     padding: 2%;
   }
 }
-</style>
+@media(max-height: 550px){
+  .hero{
+    height: 160px;
+  }
+  .hero_header{
+    margin-bottom: 15px;
+    font-size: 30px;
+    line-height: 32px;
+  }
+}
+  </style>
