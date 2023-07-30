@@ -1,12 +1,24 @@
 <template>
-  <hero @searchPlace="searchPlace" @getRandomPlace="getRandomPlace" :randomPlace="randomPlace" />
-  <place-list v-if="!isLoading" :places="searchedPlaces"  @getRandomPlace="getRandomPlace" :randomPlace="randomPlace" />
+
+  <hero 
+    @searchPlace="searchPlace"
+    @getRandomPlace="getRandomPlace" 
+    :randomPlace="randomPlace" 
+  />
+  <place-list 
+    v-if="!isLoading" 
+    :places="searchedPlaces"  
+    @getRandomPlace="getRandomPlace" 
+    :randomPlace="randomPlace" 
+  />
   <div v-else class="home_loading">
     <h2 >Поиск мест...</h2>
   </div>
+
   <my-dialog v-model:show="dialogVisible">
-        <place-item-dialog :randomPlace="randomPlace"></place-item-dialog>
-      </my-dialog>
+    <place-item-dialog :randomPlace="randomPlace"/>
+  </my-dialog>
+
 </template>
 
 <script>
@@ -49,7 +61,7 @@ export default {
     
     searchPlace(value){
       this.inputValue = value
-      this.value =''
+      value =''
     }
   },
 

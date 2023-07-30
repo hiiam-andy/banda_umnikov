@@ -15,16 +15,17 @@
       <a class="places_random__link" @click="getRandomPlace">
       случайный ресторан
     </a>
-    </p>
+  </p>
   </div>
 </template>
 
 <script>
 import PlaceCard from './PlaceCard.vue';
+import MyButton from './UI/MyButton.vue';
 
 export default {
 
-  components: { PlaceCard,},
+  components: { PlaceCard, MyButton,},
 
   props:{
     places:{
@@ -37,12 +38,13 @@ export default {
     } 
   },
 
-  emits:['getRandomPlace'] ,
+  emits:['getRandomPlace', 'ssearchPlace'] ,
 
   methods:{
     getRandomPlace(){
-        this.$emit('getRandomPlace')
-      }
+      this.$emit('getRandomPlace')
+    },
+
 }
 }
 </script>
@@ -74,12 +76,17 @@ export default {
   margin-right: 2%;
 }
 .places_random{
+  margin-bottom: 15px;
   font-size: 14px;
 }
 .places_random__link{
   color: #BF92ED;
   cursor:pointer;
   border-bottom: 1px solid #BF92ED;
+}
+.places_show{
+  color: #BF92ED;
+  cursor:pointer;
 }
 @media(max-width: 480px){
   .places_notfound{

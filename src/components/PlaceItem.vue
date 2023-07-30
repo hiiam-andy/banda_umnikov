@@ -80,10 +80,12 @@ import MyOk from './UI/MyOk.vue';
     cursor: default;
   }
   .place_header{
+    font-size: 24px;
     margin-bottom: 15px;
   }
   .place_description__item{
     margin-bottom: 5px;
+    font-size: 14px;
   }
   .place_links{
     display: flex;
@@ -105,6 +107,7 @@ import MyOk from './UI/MyOk.vue';
     }
     .place_image{
       max-width: 100%;
+      max-height: 330px;
   }
   }
 </style>

@@ -71,13 +71,14 @@
   .card{
     display: flex;
     min-height: auto;
-    max-height: 300px;
+    max-height: 150px;
   }
   .card_image{
-    width: 50%;
+    max-width: 50%;
     height: 100%;
   }
   .card_content{
+    padding: 2% 3%;
     height: 100%;
   }
 }

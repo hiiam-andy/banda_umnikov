@@ -49,6 +49,7 @@ export default {
   methods:{
     searchPlace(){
         this.$emit('searchPlace', this.inputValue)
+        this.inputValue=''
       },
       getRandomPlace(){
         this.$emit('getRandomPlace')
@@ -69,8 +70,8 @@ export default {
 }
 .hero_header{
   margin-bottom: 30px;
-  font-size: 96px;
-  line-height: 104px;
+  font-size: 48px;
+
   color:#fff;
   cursor: default;
 }
@@ -106,11 +107,11 @@ export default {
   width:60px;
   background-color: #73b300;
   border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+  border-bottom-right-radius: 5px;
   border: none;
   color:#fff;
-cursor: pointer;
-transition: background-color .2s;
+  cursor: pointer;
+  transition: background-color .2s;
 }
 .hero_button:hover{
   background-color: #46bed7;
@@ -143,18 +144,15 @@ fill:#fff;
   .hero{
     height: 320px;
   }
-  .hero_header{
-  font-size: 64px;
-  line-height: 68px;
-  }
+
 }
 @media(max-width: 456px){
   .hero{
     max-height: 200px;
   }
   .hero_header{
-    font-size: 30px;
-    line-height: 32px;
+    font-size: 28px;
+  
   }
   .hero_search_section{
     flex-direction: column;
@@ -175,8 +173,6 @@ fill:#fff;
   }
   .hero_header{
     margin-bottom: 15px;
-    font-size: 30px;
-    line-height: 32px;
   }
 }
   </style>
