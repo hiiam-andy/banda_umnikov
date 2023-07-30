@@ -11,12 +11,15 @@
   </div>
   <div v-else class="places_notfound">
     <h2 class="places_notfound__header">Не найдено</h2>
-    <p class="places_random">можете попробовать
+    <div class="places_random">можете попробовать
       <a class="places_random__link" @click="getRandomPlace">
       случайный ресторан
-    </a>
-  </p>
+    </a> 
   </div>
+  <div class="places_random"> или посмотреть
+    <a class="places_random__link" @click="searchPlace">все предложения</a>
+  </div>
+</div>
 </template>
 
 <script>
@@ -38,12 +41,15 @@ export default {
     } 
   },
 
-  emits:['getRandomPlace', 'ssearchPlace'] ,
+  emits:['getRandomPlace', 'searchPlace'] ,
 
   methods:{
     getRandomPlace(){
       this.$emit('getRandomPlace')
     },
+    searchPlace(){
+      this.$emit('searchPlace', '')
+    }
 
 }
 }
@@ -69,15 +75,16 @@ export default {
 .places_notfound{
   margin: 5% 2%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 .places_notfound__header{
-  margin-right: 2%;
+  margin-bottom: 15px;
 }
 .places_random{
-  margin-bottom: 15px;
   font-size: 14px;
+  margin-bottom: 10px;
 }
 .places_random__link{
   color: #BF92ED;

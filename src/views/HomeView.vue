@@ -1,5 +1,4 @@
 <template>
-
   <hero 
     @searchPlace="searchPlace"
     @getRandomPlace="getRandomPlace" 
@@ -10,6 +9,7 @@
     :places="searchedPlaces"  
     @getRandomPlace="getRandomPlace" 
     :randomPlace="randomPlace" 
+    @searchPlace="searchPlace"
   />
   <div v-else class="home_loading">
     <h2 >Поиск мест...</h2>
@@ -59,7 +59,7 @@ export default {
       this.dialogVisible = true
     },
     
-    searchPlace(value){
+    searchPlace(value=''){
       this.inputValue = value
       value =''
     }
