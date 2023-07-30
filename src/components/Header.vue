@@ -50,9 +50,10 @@ export default {
 .header_link:active{
   background-color: #86ad38;
 }
-@media(max-width: 456px){
+@media(max-width: 915px){
 .header_link{
   font-size: 12px;
 }
 }
+
 </style>

@@ -8,8 +8,8 @@
     >
     <div class="card_content">
       <h1 class="card_header">{{ place.name }}</h1>
-      <p>{{ place.address ? place.address : "Пока еще не знаем где"}}</p>
-      <p><b>средний чек: </b> {{ place.price !== 0 ? place.price: "еще не посчитали"  }}</p>
+      <p class="card_address">{{ place.address ? place.address : "Пока еще не знаем где"}}</p>
+      <p class="card_price"><b>средний чек: </b> {{ place.price !== 0 ? place.price: "еще не посчитали"  }}</p>
     </div>
   </div>
 </template>
@@ -35,10 +35,8 @@
   border-radius: 15px;
   box-shadow: 0 0 24px rgba(49,49,49,.28);
   overflow: hidden;
-  min-width:200px;
-  max-width: 600px;
-  min-height: 316px;
-  max-height: 380px;
+  min-height: 300px;
+  max-height: 310px;
   cursor: pointer;
   transition: box-shadow .2s;
 }
@@ -59,12 +57,28 @@
   min-height: 50%;
 }
 .card_header{
-  font-size: 26px;
-    line-height: 28px;
+  font-size: 100%;
 }
-@media(max-width: 456px){
+.card_address{
+  font-size: 12px;
+}
+.card_price{
+  font-size: 12px;
+}
+
+
+@media(max-width: 442px){
   .card{
+    display: flex;
+    min-height: auto;
     max-height: 300px;
+  }
+  .card_image{
+    width: 50%;
+    height: 100%;
+  }
+  .card_content{
+    height: 100%;
   }
 }
 </style>

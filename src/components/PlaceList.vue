@@ -49,7 +49,7 @@ export default {
 
 <style scoped>
 .section_places{
-  padding: 0 3%;
+  padding: 0 2%;
   margin-bottom: 15px;
 }
 .places_header{
@@ -57,7 +57,7 @@ export default {
 }
 .places_wrapper{
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(207px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(205px, 1fr));
   gap:  15px;
   justify-content: space-around;
   margin-left: auto;
